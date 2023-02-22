@@ -4,12 +4,13 @@ import java.util.Objects;
 
 public class Invoice {
 
+
     int totalNumberOfRides ;
     double aggregateTotalFare ;
-    double averageFare;
+    double averageFare ;
+
 
     public Invoice(int totalNumberOfRides, double aggregateTotalFare, double averageFare) {
-
         this.totalNumberOfRides = totalNumberOfRides;
         this.aggregateTotalFare = aggregateTotalFare;
         this.averageFare = averageFare;
@@ -17,7 +18,6 @@ public class Invoice {
 
     @Override
     public boolean equals(Object o) {
-
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Invoice invoice = (Invoice) o;

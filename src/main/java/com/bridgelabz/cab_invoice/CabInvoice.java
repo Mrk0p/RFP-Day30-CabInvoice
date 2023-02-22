@@ -9,16 +9,25 @@ public class CabInvoice {
     public CabInvoice(){
     }
     public double calculateTotalFare(double distance, double time) {
+
         double totalFare = distance*COST_PER_KM + time*COST_PER_MIN;
         return totalFare<MINIMUM_FARE ? MINIMUM_FARE : totalFare;
     }
 
     public double calculateTotalFare(Ride[] rides) {
+
         double aggregateTotalFare = 0.0;
         for (Ride ride:rides) {
             double totalFare = calculateTotalFare(ride.distance,ride.time);
             aggregateTotalFare += totalFare;
         }
         return aggregateTotalFare;
+    }
+    public Invoice generateInvoice(Ride[] rides) {
+
+        int totalRides = rides.length;
+        double aggregateFare = calculateTotalFare(rides);
+        double averageFare = aggregateFare/totalRides;
+        return new Invoice(totalRides,aggregateFare,averageFare);
     }
 }
